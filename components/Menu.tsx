@@ -1,4 +1,4 @@
-// import React from "react";
+"use client";
 
 import { useState } from "react";
 import {
@@ -9,6 +9,7 @@ import {
   FaImages,
 } from "react-icons/fa";
 import { MdExplore } from "react-icons/md";
+import ThemeToggle from "./ThemeToggle";
 
 const menuItems = [
   { name: "News Feed", icon: <MdExplore size={20} />, active: true },
@@ -27,7 +28,7 @@ export default function Menu() {
   };
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex w-full items-center mt-10 flex-col gap-3">
       {menuItems.map((item, index) => (
         <button
           key={index}
@@ -37,15 +38,18 @@ export default function Menu() {
           className={`cursor-pointer transition-all ${
             item.name === active
               ? "bg-black text-white"
-              : "bg-amber-50 text-black"
+              : "bg-white dark:bg-gray-800 text-pastel-light-subtext dark:text-gray-200"
           } px-6 py-2 rounded-2xl
        border-black border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] 
-        active:border-b-[2px] active:brightness-90 active:translate-y-[2px] flex items-center gap-2 font-semibold  md:w-1xs lg:w-60`}
+        active:border-b-[2px] active:brightness-90 active:translate-y-[2px] flex items-center gap-2 font-semibold md:w-full lg:w-60`}
         >
           {item.icon}
-          {item.name}
+          <span className="hidden md:inline font-primary font-bold text-lg">
+            {item.name}
+          </span>
         </button>
       ))}
+      {/* <ThemeToggle /> */}
     </div>
   );
 }
